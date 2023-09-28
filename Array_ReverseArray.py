@@ -12,3 +12,5 @@ A = [1, 2, 3, 4, 5, 6]
 print(f"Original list is",A)
 reverseList(A, 0, 5)
 print(f"Reversed list is",A)
+
+#ends here
