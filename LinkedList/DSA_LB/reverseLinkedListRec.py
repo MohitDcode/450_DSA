@@ -1,7 +1,6 @@
+# Given the head of a singly linked list, reverse the list, and return the reversed list.
 # Input: head = [1,2,3,4,5]
-# Output: [3,4,5]
-# Explanation: The middle node of the list is node 3.
-
+# Output: [5,4,3,2,1]
 class Node:
     def __init__(self, data):
         self.data = data
@@ -10,13 +9,17 @@ class Node:
 def LinkedList():
     head = None
 
-def middleNode(head):
-    temp = head
-
-    while temp and temp.next:
-        head = head.next
-        temp = temp.next.next
-    return head
+# Reverse the LL
+def reversedList(node):
+    if node == None:
+        return node
+    if node.next == None:
+        return node
+    
+    node1 = reversedList(node.next)
+    node.next.next = node
+    node.next = None
+    return node1
 
 # Print the LL
 def printList():
@@ -43,6 +46,6 @@ if __name__ == '__main__':
     print('Created Linked list is: ')
     printList()
 
-    head = middleNode(head)
-    print('\nMiddle of the Linked list is: ')
+    head = reversedList(head)
+    print('\nReversed Linked list is: ')
     printList()

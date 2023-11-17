@@ -1,7 +1,7 @@
-# Input: head = [1,2,3,4,5]
-# Output: [3,4,5]
-# Explanation: The middle node of the list is node 3.
-
+# LC 234
+# https://leetcode.com/problems/palindrome-linked-list/description/
+# Input: head = [1,2,2,1]
+# Output: true
 class Node:
     def __init__(self, data):
         self.data = data
@@ -10,13 +10,15 @@ class Node:
 def LinkedList():
     head = None
 
-def middleNode(head):
-    temp = head
+# Find Palindrome
+def isPalindrome(head):
+    current = head
+    nums = list()
 
-    while temp and temp.next:
-        head = head.next
-        temp = temp.next.next
-    return head
+    while current is not None:
+        nums.append(current.data)
+        current = current.next
+    return nums == nums[::-1]
 
 # Print the LL
 def printList():
@@ -36,13 +38,12 @@ def push(head_ref, new_data):
 # Driver Code
 if __name__ == '__main__':
     head = LinkedList()
-    arr = [1,2,3,4,5]
+    arr = [1,2,3,2,1]
     for i in range(len(arr)):
         head = push(head, arr[i])
 
     print('Created Linked list is: ')
     printList()
 
-    head = middleNode(head)
-    print('\nMiddle of the Linked list is: ')
-    printList()
+    result = isPalindrome(head)
+    print('\nPalindrome status is:', result)
